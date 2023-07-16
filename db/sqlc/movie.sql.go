@@ -3,7 +3,7 @@
 //   sqlc v1.19.0
 // source: movie.sql
 
-package db
+package sqlc
 
 import (
 	"context"
