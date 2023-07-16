@@ -9,8 +9,8 @@ import (
 )
 
 type Movie struct {
-	ID        int32          `json:"id"`
-	Title     sql.NullString `json:"title"`
-	Genre     sql.NullString `json:"genre"`
-	CreatedAt sql.NullTime   `json:"created_at"`
+	ID        int32        `json:"id"`
+	Title     string       `json:"title"`
+	Genre     string       `json:"genre"`
+	CreatedAt sql.NullTime `json:"created_at"`
 }
