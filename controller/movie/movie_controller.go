@@ -5,6 +5,7 @@ import (
 
 	"github.com/RNekoCloud/gin-dockerized/db/sqlc"
 	"github.com/gin-gonic/gin"
+	_ "github.com/lib/pq"
 )
 
 var q *sqlc.Queries
@@ -20,7 +21,7 @@ func init() {
 	db, err = sql.Open(dbDriver, dbSource)
 
 	if err != nil {
-		panic("Failed to connect database!")
+		panic(err)
 	}
 
 	q = sqlc.New(db)
