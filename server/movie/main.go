@@ -1,6 +1,9 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	controller "github.com/RNekoCloud/gin-dockerized/controller/movie"
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
 	r := gin.Default()
@@ -10,6 +13,8 @@ func main() {
 			"message": "Welcome to my app!",
 		})
 	})
+
+	r.POST("/movie", controller.AddMovie)
 
 	r.Run(":3003")
 }
