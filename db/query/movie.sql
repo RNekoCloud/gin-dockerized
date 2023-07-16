@@ -4,7 +4,7 @@ WHERE id = $1 LIMIT 1;
 
 -- name: GetMovies :many
 SELECT * FROM movies
-ORDER BY name;
+ORDER BY title;
 
 -- name: CreateMovie :one
 INSERT INTO movies (
