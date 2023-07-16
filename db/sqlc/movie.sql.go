@@ -7,7 +7,6 @@ package sqlc
 
 import (
 	"context"
-	"database/sql"
 )
 
 const createMovie = `-- name: CreateMovie :one
@@ -20,8 +19,8 @@ RETURNING id, title, genre, created_at
 `
 
 type CreateMovieParams struct {
-	Title sql.NullString `json:"title"`
-	Genre sql.NullString `json:"genre"`
+	Title string `json:"title"`
+	Genre string `json:"genre"`
 }
 
 func (q *Queries) CreateMovie(ctx context.Context, arg CreateMovieParams) (Movie, error) {

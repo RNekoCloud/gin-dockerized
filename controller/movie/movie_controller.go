@@ -4,6 +4,7 @@ import (
 	"database/sql"
 
 	"github.com/RNekoCloud/gin-dockerized/db/sqlc"
+	"github.com/gin-gonic/gin"
 )
 
 var q *sqlc.Queries
@@ -23,5 +24,9 @@ func init() {
 	}
 
 	q = sqlc.New(db)
+
+}
+
+func AddMovie(ctx *gin.Context) {
 
 }
