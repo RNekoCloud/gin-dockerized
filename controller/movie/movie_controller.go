@@ -2,6 +2,7 @@ package controller
 
 import (
 	"database/sql"
+	"strconv"
 
 	"github.com/RNekoCloud/gin-dockerized/db/sqlc"
 	"github.com/gin-gonic/gin"
@@ -43,4 +44,24 @@ func AddMovie(ctx *gin.Context) {
 	}
 
 	ctx.JSON(200, res)
+}
+
+func GetMovie(ctx *gin.Context) {
+	paramID := ctx.Param("id")
+	// Convert string number to int type
+	// For example "8" to => 8 (int)
+	toInt, _ := strconv.Atoi(paramID)
+
+	res, err := q.GetMovie(ctx, int32(toInt))
+
+	if err != nil {
+		ctx.JSON(404, gin.H{
+			"error": "Record is not found",
+		})
+
+		return
+	}
+
+	ctx.JSON(200, res)
+
 }
