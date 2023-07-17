@@ -15,7 +15,13 @@ func main() {
 		})
 	})
 
+	// Add movie record
 	r.POST("/movie", controller.AddMovie)
+
+	// Fetching movies record
+	r.GET("/movies", controller.GetMovies)
+	// Fetching movie by its ID
+	r.GET("/movies/:id", controller.GetMovie)
 
 	// Initialize Gin App
 	r.Run(":3003")
