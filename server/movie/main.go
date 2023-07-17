@@ -8,6 +8,7 @@ import (
 func main() {
 	r := gin.Default()
 
+	// Route GIN
 	r.GET("/", func(ctx *gin.Context) {
 		ctx.JSON(200, gin.H{
 			"message": "Welcome to my app!",
@@ -16,5 +17,6 @@ func main() {
 
 	r.POST("/movie", controller.AddMovie)
 
+	// Initialize Gin App
 	r.Run(":3003")
 }

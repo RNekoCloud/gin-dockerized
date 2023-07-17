@@ -13,7 +13,7 @@ var db *sql.DB
 
 const (
 	dbDriver = "postgres"
-	dbSource = "postgresq://root:root@localhost:5432/movie?sslmode=disable"
+	dbSource = "postgresql://root:root@localhost:5432/movie?sslmode=disable"
 )
 
 func init() {
@@ -37,7 +37,9 @@ func AddMovie(ctx *gin.Context) {
 	if err != nil {
 		ctx.JSON(400, gin.H{
 			"message": "Failed to add new record",
+			"error":   err,
 		})
+		panic(err)
 	}
 
 	ctx.JSON(200, res)
