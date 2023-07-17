@@ -65,3 +65,17 @@ func GetMovie(ctx *gin.Context) {
 	ctx.JSON(200, res)
 
 }
+
+func GetMovies(ctx *gin.Context) {
+	res, err := q.GetMovies(ctx)
+
+	if err != nil {
+		ctx.JSON(404, gin.H{
+			"error": "Data is not found",
+		})
+
+		return
+	}
+
+	ctx.JSON(200, res)
+}
