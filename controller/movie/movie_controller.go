@@ -14,7 +14,7 @@ var db *sql.DB
 
 const (
 	dbDriver = "postgres"
-	dbSource = "postgresql://root:root@localhost:5432/movie?sslmode=disable"
+	dbSource = "postgresql://root:root@postgresdb:5432/movie?sslmode=disable"
 )
 
 func init() {
