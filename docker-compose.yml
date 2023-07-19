@@ -21,8 +21,11 @@ services:
   postgresdb:
     image: postgres:latest
     container_name: practice_postgres
-    restart: on-failure
     ports:
       - 5432:5432
-    volumes:
-      - ~/postgres:/data/db
+    networks:
+      - test_network
+  
+networks:
+  test_network:
+    driver: bridge
