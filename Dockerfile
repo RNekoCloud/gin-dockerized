@@ -1,5 +1,6 @@
 FROM golang:1.20.6-alpine3.18
 
+RUN mkdir /gin-dockerized
 WORKDIR /gin-dockerized
 
 COPY go.mod /gin-dockerized
