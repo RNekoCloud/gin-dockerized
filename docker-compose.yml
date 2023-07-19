@@ -1,19 +1,27 @@
 version: '3'
 services:
   app:
-    image: golang:1.20.6-alpine3.18
     container_name: gin-dockerized
-    restart: always
-    command: sh -c "go mod tidy && go build -o bin/server server/movie/main.go"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=movie
+      - DATABASE_HOST=postgresdb
+    tty: true
+    build: .
     ports:
       - 3003:3003
-    working_dir: /app
-    volumes:
-      - ./:/app
-  postgres:
+    restart: on-failure
+    volumes: 
+      - .:/app
+    depends_on:
+      - postgresdb
+    networks:
+      - test_network
+  postgresdb:
     image: postgres:latest
     container_name: practice_postgres
-    restart: always
+    restart: on-failure
     ports:
       - 5432:5432
     volumes:
