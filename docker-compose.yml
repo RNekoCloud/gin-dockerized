@@ -18,6 +18,8 @@ services:
       - postgresdb
     networks:
       - test_network
+
+
   postgresdb:
     image: postgres:latest
     container_name: practice_postgres
@@ -25,7 +27,12 @@ services:
       - 5432:5432
     networks:
       - test_network
-  
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data
+
 networks:
   test_network:
     driver: bridge
