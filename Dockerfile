@@ -9,7 +9,7 @@ COPY . /gin-dockerized
 
 RUN go mod tidy
 
-RUN go build -o /gin-dockerized/bin/server /gin-dockerized/main.go
+RUN go build -o /gin-dockerized/bin/server /gin-dockerized/server/movie/main.go
 
 EXPOSE 3003
 
